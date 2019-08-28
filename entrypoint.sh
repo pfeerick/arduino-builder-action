@@ -28,16 +28,20 @@ fi
 
 if [ -n "$SKETCH_PATH" ]; then
     if [ -z "$1" ]; then
+        echo "Building sketch path: ${SKETCH_PATH}"
         arduino-builder $BUILDER_OPTIONS "$SKETCH_PATH"
     else
+        echo "Building sketch path: ${SKETCH_PATH}"
         arduino-builder "$@" "$SKETCH_PATH"
     fi
 else
     for sketch in `find "$SKETCH_DIRECTORY_PATH" -name '*.ino'`
     do
         if [ -z "$1" ]; then
+            echo "Building sketch: ${sketch}"
             arduino-builder $BUILDER_OPTIONS "$sketch"
         else
+            echo "Building sketch: ${sketch}"
             arduino-builder "$@" "$sketch"
         fi
     done
